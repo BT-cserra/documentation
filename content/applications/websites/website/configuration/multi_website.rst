@@ -18,8 +18,20 @@ Each website can be designed and configured independently with its own :doc:`dom
    Duplicate content (i.e., pages and content shared between multiple websites) can have a negative
    impact on :doc:`../structure/seo`.
 
-Website creation
-================
+Creating another website
+========================
+
+.. important::
+   Creating multiple websites requires owning a domain name and using subdomains or owning multiple
+   domain names.
+
+   Before creating a second website, you should either:
+
+   - :ref:`Register a domain name for free with Odoo <domain-name/register>` and :ref:`use a
+     subdomain <domain-name/register/subdomains>` for the other website (or both websites).
+   - Purchase or own a domain name, :ref:`configure it <domain-name/existing>`, and :ref:`use a
+     subdomain <domain-name/existing/subdomains>` for the other website (or both websites).
+   - Purchase or own two domain names and :ref:`configure each of them <domain-name/existing>`.
 
 To create a new website, proceed as follows:
 
