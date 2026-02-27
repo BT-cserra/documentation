@@ -140,29 +140,76 @@ Accounting app can create exceptions. To do so:
 
 .. _accounting/year-end/current-year-earnings:
 
-Current year's earnings
-~~~~~~~~~~~~~~~~~~~~~~~
+The New Result Allocation Logic
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Odoo uses a unique account type called **current year's earnings** to display the difference
-between the **income** and **expense** accounts.
+From Implicit to Explicit: The "Current Year Earnings" Type
+***********************************************************
 
-.. note::
-   The chart of accounts can only contain one account of this type. By default, it is a 999999
-   account named :guilabel:`Undistributed Profits/Losses`.
+Historically, Odoo users associated the end-of-year result with account 999999. However,
+the system logic is actually driven by the account type *Current Year Earnings*.
 
-To allocate the current year's earnings, create a new miscellaneous entry with a date set to the end
-of the fiscal year to book them to any equity account.
+- **Previous Versions**: The result was an automatic calculation, often mixing system-generated data
+  with manual entries of the same account.
+- **v19.0 Paradigm**: Odoo now displays the result of the year **N** as a **Dynamic Line** called
+  "Undistributed Profits/Losses" within the Trial Balance and General Ledger of the year **N+1**. To clear
+  this dynamic line, you must pass an **explicit accounting entry** for your end-of-year result in a
+  **Current Year Earnings** account. This ensures that calculations and manual entries are never confused.
 
-Then, verify whether the current year's earnings on the **balance sheet** correctly show a zero
-balance. If so, a :guilabel:`Hard Lock date` can be set to the last day of the fiscal year in
-:menuselection:`Accounting --> Accounting --> Lock Dates`.
+Balancing the Trial Balance
+***************************
 
-.. tip::
-   The :guilabel:`Hard Lock date` field is irreversible and is intended to ensure data
-   inalterability required to comply with accounting regulations in certain countries. If such
-   compliance is not applicable, setting this field may not be necessary. However, if required, the
-   date should only be set once it is confirmed to be correct, as it **cannot be changed or
-   overridden**, regardless of access rights.
+A Trial Balance is, by default, always balanced (sum of Debits = sum of Credits) because it records the sum of all entries.
+However, because reports are generated between two dates:
+
+- **Balance Sheet accounts** carry over their balances from previous years.
+- **P&L accounts** reset to zero at the start of the year.
+
+The **Dynamic Line** compensates for this timing difference. By posting an explicit entry to a
+Current Year Earnings account at year-end, you replace the virtual calculation (from previous versions)
+with a physical entry, "neutralizing" the dynamic line and ensuring the Balance Sheet is balanced by
+actual journal items.
+
+Affectation and Withdrawal Accounts (P&L Impact)
+************************************************
+
+In specific legislations like Belgium, the result must be allocated (to reserves, dividends, etc.)
+within the same fiscal year, on "Allocation" or "Withdrawal" accounts.
+
+- **No Carry Forward**: Like P&L accounts, allocation and withdrawal accounts do not have opening balances.
+- **P&L Presentation**: These accounts **do not appear on the Balance Sheet**. When they are displayed in
+  reports, they appear at the bottom of the **Profit & Loss** statement.
+- **Balance Sheet Counterparts**: Only the *counterparty* of these movements (e.g., the Dividends Payable or
+  the Reserve accounts) appears on the Balance Sheet. This maintains a strict separation between the process of
+  distributing profit and the resulting liabilities or equity.
+
+.. example::
+   Standard Account Pairs (Belgian GAAP / CSA-WVV)
+
+   To allocate a profit, you debit an *Allocation* account (P&L) and credit a *Destination* account
+   (Balance Sheet)
+
+   +-----------------------+----------------------------------------+--------------------------------------+
+   | **Destination**       | **P&L Allocation Account (Debit)**     | **B/S Destination Account (Credit)** |
+   +=======================+========================================+======================================+
+   | **Legal Reserve**     | 692000 Dotation à la réserve légale    | 130000 Réserve légale                |
+   +-----------------------+----------------------------------------+--------------------------------------+
+   | **Dividends**         | 694000 Dividendes de l'exercice        | 471000 Dividendes à payer            |
+   +-----------------------+----------------------------------------+--------------------------------------+
+   | **Carried Forward**   | 693000 Affectation au bénéfice reporté | 140000 Bénéfice reporté              |
+   +-----------------------+----------------------------------------+--------------------------------------+
+
+Preparing for the Indirect Cash Flow Statement
+**********************************************
+
+This new structure prevents "polluting" the generic P&L. By isolating result allocations in dedicated accounts
+that the P&L report ignores for net income calculation, Odoo ensures a "pure" **Net Income** figure. This is
+vital for the **Indirect Cash Flow Statement**, which uses Net Income as its starting point to adjust for non-cash
+movements.
+
+.. important::
+   **Action Required**: For consistency in your reporting history, it is recommended to revisit past fiscal years
+   and explicitly book the results that were previously handled implicitly by the system.
 
 .. _accounting/year-end/annual-closing:
 
