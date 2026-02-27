@@ -29,18 +29,28 @@ Customize blog posts
 To customize the layout of all blog posts, open one and click :menuselection:`Edit --> Style`.
 Different options can be used to customize the posts:
 
-- :guilabel:`Layout`: display the title inside or above the cover.
-- :guilabel:`Increase Readability`: Enlarge or not the blog posts' size for better reading comfort.
-- :guilabel:`Sidebar`: display archives, authors, blogs list, social networks, next article and
-  comments:
+- :guilabel:`Breadcrumb`: display the breadcrumb trail.
 
-  - :guilabel:`Archive`: allow visitors to view all posts from a specific month by selecting it.
+- :guilabel:`Layout`: Choose the layout of the blog posts between the following:
+
+  - :guilabel:`Title above cover`: display the title above the cover.
+  - :guilabel:`Title inside cover`: display the title inside the cover.
+  - :guilabel:`Split cover`: display the title and the cover side by side.
   - :guilabel:`Author`: display the post author.
-  - :guilabel:`Blog List`: display links to all the blogs.
   - :guilabel:`Share Links`: add clickable icons that link to your social network profiles and a
     subscription field for your newsletter.
+  - :guilabel:`Tags`: display the post tags.
 
-- :guilabel:`Breadcrumb`: display the breadcrumb trail.
+- :guilabel:`Sidebar`: Clicking one of the following options will display a sidebar that contains the selected content:
+
+  - :guilabel:`Author`: display the post author.
+  - :guilabel:`Table of Contents`: Adds a table of contents to the post for easier navigation.
+  - :guilabel:`Share Links`: add clickable icons that link to your social network profiles and a
+    subscription field for your newsletter.
+  - :guilabel:`Blog List`: display links to all the blogs.
+  - :guilabel:`Archive`: allow visitors to view all posts from a specific month by selecting it.
+
+
 - :guilabel:`Bottom`: click the :guilabel:`Next Article` to hide or display the next post at the
   end of the page, and click :guilabel:`Comments` to enable or disable visitors' comments.
 
@@ -130,26 +140,28 @@ options as desired.
    If you use multiple blogs, settings configured on the main blog landing page or on a specific
    blog landing page will be applied to all other pages.
 
+- :guilabel:`Content Width`: click on :guilabel:`Regular` to use the regular content width or click on
+  :guilabel:`Full` to enlarge the content width.
 - :guilabel:`Top Banner`: display or hide the page's banner:
 
   - :guilabel:`Full-width`: make the banner use the page's full-width or display a condensed banner.
 - :guilabel:`Layout`: display blog posts as grid or as list.
-- :guilabel:`Cards`: display blog posts with or without the *card* effect.
-- :guilabel:`Increase Readability`: enlarge or not the blog posts' size for better reading comfort .
-- :guilabel:`Sidebar`: display or hide a sidebar that contains an *about us* section, depending
-  on the options selected:
 
-  - :guilabel:`Archives`: allow visitors to view all posts from a specific month by selecting it.
+  - :guilabel:`Promote last`: emphasize the most recent post in the blog posts list.
+  - :guilabel:`Cards design`: display blog posts with or without the *card* effect.
+- :guilabel:`Posts Cover`: display the :guilabel:`the posts' covers`
+- :guilabel:`Teaser`: display the posts' first sentences.
+- :guilabel:`Tags`: display the posts' tags.
+- :guilabel:`Author`: display the posts' authors.
+- :guilabel:`Stats`: display or hide the posts' number of comments and views.
+- :guilabel:`Sidebar`: Clicking one of the following options will display a sidebar that contains the selected content:
+
+  - :guilabel:`About Us`: display an *about us* section to briefly describe your blog or company.
   - :guilabel:`Follow Us`: add clickable icons that link to your social network profiles and a
     subscription field for your newsletter.
   - :ref:`Tags List <blog/tags>`: allow visitors to view all blog posts that share a specific tag by
     selecting it.
-
-- :guilabel:`Posts List`: select :guilabel:`Cover` to display the posts' covers or select
-  :guilabel:`No Cover` to hide them.
-- :guilabel:`Author`: display the posts' authors.
-- :guilabel:`Comments/Views Stats`: display or hide the posts' number of comments and views.
-- :guilabel:`Teaser & Tags`: display the posts' first sentences and tags.
+  - :guilabel:`Archives`: allow visitors to view all posts from a specific month by selecting it.
 
 After applying the desired changes, click :guilabel:`Save`
 
