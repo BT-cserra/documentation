@@ -23,6 +23,11 @@ The states included in this localization are:
 - Idaho (ID)
 - Oregon (OR)
 - North Carolina (NC)
+- Tennessee (TN)
+- Iowa (IA)
+- Georgia (GA)
+- Mississippi (MS)
+- New Jersey (NJ)
 
 .. note::
    Federal taxes (Income, :abbr:`FICA (Federal Insurance Contributions Act)`, and Unemployment) for
