@@ -221,6 +221,107 @@ When using multiple purchase journals, new vendor bills can be received via the 
 Then, open the Document app, navigate to the appropriate folder, select the relevant vendor bills,
 and click :guilabel:`Create Vendor Bill`. The corresponding vendor bill is then created.
 
+.. _accounting/e-invoicing/extra-fields:
+
+Extra fields
+------------
+
+.. important::
+   Adding fields requires the :doc:`Studio <../../../studio>` application.
+
+Odoo supports the most common Peppol fields by default, but additional Peppol data can be included
+when sending e-invoices via Peppol by adding extra fields to the invoice form using Studio.
+
+.. _accounting/e-invoicing/naming:
+
+Naming convention
+~~~~~~~~~~~~~~~~~
+
+To ensure Odoo recognizes these extra fields as Peppol data and includes them when sending documents
+via Peppol, the fields must follow a strict naming convention for both the technical name and the
+label of the field.
+
+Odoo automatically creates the technical names of new fields based on their labels. To ensure the
+technical name is formatted correctly in the XML, :ref:`create fields
+<accounting/e-invoicing/create-fields>` with the exact labels found in the tables below. The field
+type must also match the data type in the tables below.
+
+The following fields apply to the entire invoice. Add these to the invoice form view.
+
+.. list-table::
+   :header-rows: 1
+   :stub-columns: 1
+
+   * - Studio field label
+     - Technical name (XML)
+     - Data type
+   * - Peppol tax point date
+     - `TaxPointDate`
+     - Date
+   * - Peppol contract document reference ID
+     - `ContractDocumentReference.ID`
+     - Text
+   * - Peppol despatch document reference ID
+     - `DespatchDocumentReference.ID`
+     - Text
+   * - Peppol accounting cost
+     - `AccountingCost`
+     - Text
+   * - Peppol project reference ID
+     - `ProjectReference.ID`
+     - Text
+   * - Peppol Invoice period Start Date
+     - `InvoicePeriodStartDate`
+     - Date
+   * - Peppol Invoice period End Date
+     - `InvoicePeriodEndDate`
+     - Date
+   * - Peppol Order Reference ID
+     - `OrderReference.ID`
+     - Text
+
+The following fields apply to specific invoice lines. Add these to the invoice line list view.
+
+.. list-table::
+   :header-rows: 1
+   :stub-columns: 1
+
+   * - Studio field label
+     - Technical name (XML)
+     - Data type
+   * - Peppol order line reference ID
+     - `OrderLineReference/LineID`
+     - Text
+   * - Peppol buyers item ID
+     - `item.buyersItemIdentification`
+     - Text
+
+.. _accounting/e-invoicing/create-fields:
+
+Create fields
+~~~~~~~~~~~~~
+
+The field may need to be added to the invoice form view or the invoice line list view, depending on
+which field it is. Check the tables above to know which view to add it to. To create a new field and
+add it to a view, follow these steps:
+
+#. Navigate to :menuselection:`Accounting --> Customers --> Invoices` (or :menuselection:`Invoicing
+   --> Customers --> Invoices` for Invoicing users).
+#. Open an existing invoice, or click :guilabel:`New`.
+#. Click the :icon:`oi-studio` (:guilabel:`Toggle Studio`) icon to open Studio.
+#. If adding a field to invoice line list view, click in the :guilabel:`Invoice Lines` tab and click
+   :guilabel:`Edit List view`.
+#. Click and drag a :guilabel:`Text` or :guilabel:`Date` field from the panel on the left to the
+   desired location in the view on the right.
+#. Enter the :guilabel:`Label` exactly as it appears in the tables above.
+#. Click :guilabel:`Close` to save all changes.
+
+.. tip::
+   After fields have been created as explained above, they can be added to other views such as the
+   invoice list view. To add an existing field to another view, navigate to the desired view, and
+   and click and drag the field from the :guilabel:`Existing Fields` section of the panel on the
+   left to the desired location in the view on the right.
+
 .. _accounting/e-invoicing/peppol-deregister:
 
 Peppol deregistration from Odoo
