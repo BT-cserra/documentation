@@ -164,9 +164,10 @@ Password management is an important part of granting users autonomous access to 
 times. Odoo offers a few different methods to reset a user's password.
 
 .. tip::
-   Odoo has a setting to specify the length needed for a password. This setting can be accessed by
-   navigating to :menuselection:`Settings app --> Permissions` section, and entering the desired
-   password length in the :guilabel:`Minimum Password Length` field. By default the value is `8`.
+   Odoo has a setting to specify the length needed for a password. To access it, make sure the
+   `auth_password_policy` module is installed. Then, navigate to
+   :menuselection:`Settings app --> Permissions` section, and enter the desired password length
+   in the :guilabel:`Minimum Password Length` field. By default the value is `8`.
 
 .. image:: users/minimum-password-length.png
    :alt: Minimum Password Length highlighted in the Permissions section of General Settings.
